@@ -13,10 +13,15 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-  # POST Check login credentials 
+  # POST Check login credentials
   def login
     user = User.where(:Email => params[:Email]).where(:Password => params[:Password]).first
-    render json: user.id
+    render json: user
+  end
+
+  def userLoad
+    user = User.where(:id => params[:userID])
+    render json: user
   end
 
   # POST /users
